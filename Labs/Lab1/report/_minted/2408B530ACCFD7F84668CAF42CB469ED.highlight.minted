@@ -1,0 +1,23 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{bin\PYGZus{}size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{max\PYGZus{}val}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{min\PYGZus{}val}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{bins}\PYG{p}{;}
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{counts}\PYG{p}{(}\PYG{n}{bins}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{val}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{vect}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{static\PYGZus{}cast}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{((}\PYG{n}{val}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{min\PYGZus{}val}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{bin\PYGZus{}size}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{if}\PYG{p}{(}\PYG{n}{index}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{bins}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{index}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{counts}\PYG{p}{[}\PYG{n}{index}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{max\PYGZus{}count}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{count}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{counts}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{if}\PYG{p}{(}\PYG{n}{count}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{max\PYGZus{}count}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{max\PYGZus{}count}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{count}\PYG{p}{;}
+
+\PYG{+w}{  }\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{level}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{max\PYGZus{}count}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{level}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{level}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{bin}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{bin}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{bins}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{bin}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{k}{if}\PYG{p}{(}\PYG{n}{counts}\PYG{p}{[}\PYG{n}{bin}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZgt{}=}\PYG{+w}{ }\PYG{n}{level}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}***\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k}{else}
+\PYG{+w}{        }\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}   \PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{n}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{+w}{ }\PYG{n}{endl}\PYG{p}{;}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

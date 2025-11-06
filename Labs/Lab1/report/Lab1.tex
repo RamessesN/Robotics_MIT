@@ -7,7 +7,7 @@
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
 
-\usepackage{graphicx,booktabs,array,multirow,url}
+\usepackage{graphicx,float,booktabs,array,multirow,url}
 \usepackage{gensymb}
 \usepackage[british]{babel}
 \usepackage[square,numbers,sort&compress]{natbib}
@@ -19,6 +19,8 @@
             linkcolor=blue,
             citecolor=blue,
             urlcolor=blue]{hyperref}
+
+\usepackage{minted}
 
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -47,7 +49,7 @@
 \newcommand{\studentname}{Yuwei ZHAO}
 \newcommand{\studentnumber}{23020036096}
 \newcommand{\labgroup}{Group \#31}
-\newcommand{\labdate}{2025-11-05}
+\newcommand{\labdate}{2025-11-06}
 \newcommand{\course}{Robotics Integration Group Project I}
 \newcommand{\labtitle}{Lab 1 Report}
 
@@ -57,7 +59,7 @@
 \title{
     \vspace{-1cm}
     \textbf{\labtitle}\\[0.3em]
-    \large \course
+    \Large \course
 }
 \author{
     \studentname~(\studentnumber)\\
@@ -86,65 +88,828 @@
 \begin{document}
 
 \maketitle
-\thispagestyle{empty}
 
 %----------------------------------------------------------------------------------------
 \begin{abstract}
-This report presents the experimental setup and results of Lab 1. 
-The focus of the experiment is on understanding the dynamics of ...
+This report presents the setup and results of Lab 1.
+The main objective of the experiment is to install Ubuntu 20.04, Git, and the C++ compilation tools, 
+and to become familiar with basic shell commands and version control using Git.
+
+See Resources on \href{https://github.com/RamessesN/Robotics_MIT/tree/7de39996b963112707e9dd1d6f79f51975c0c8d3}{git@github.com:RamessesN/Robotics\_MIT}.
 \end{abstract}
 
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-The aim of this laboratory session is to investigate fundamental control concepts ... \cite{Paper2025}
+This laboratory session serves as the foundation for subsequent robotics development projects. 
+Before implementing control algorithms or integrating robotic systems, it is essential to establish a consistent and reliable development environment. 
+The primary purpose of this experiment is to install and configure Ubuntu 20.04, Git, and C++ compilation tools, ensuring that all essential development utilities are functional.
 
 %----------------------------------------------------------------------------------------
 \section{Procedure}
+%----------------------------------------------------------------------------------------
 \subsection{Part I}
-\begin{itemize}
-    \item \textbf{Objective:} \dots
-    \item \textbf{Methodology:} \dots
-    \item \textbf{Observations:} \dots
-    \item \textbf{Discussion:} \dots
-\end{itemize}
+\subsubsection{Objective}
+To set up an Ubuntu environment on a virtual machine for subsequent experiments.
 
+\subsubsection{Methodology}
+The experiment was conducted on an \textit{Apple Silicon} Mac using \textit{Parallels Desktop} as the virtualization platform.  
+Since Ubuntu 20.04 does not provide an official ARM64 image, the ARM version of Ubuntu 24.04 was selected instead.  
+The downloaded ISO file was mounted as the installation source, and the operating system was successfully installed by following the guided setup procedure.  
+
+\textit{Note:} Compatibility testing confirmed that ROS1 and related tools can be properly installed and executed on Ubuntu 24.04.
+
+\subsubsection{Observations}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./source/img/partI.png}
+    \caption{Ubuntu 24.04 Installed on Parallels Desktop}
+    \label{fig:ubuntu_installation}
+\end{figure}
+
+\subsubsection{Discussion}
+The installation of Ubuntu 24.04 on Parallels Desktop was completed successfully, providing a stable ARM-based Linux environment for further development.
+
+%----------------------------------------------------------------------------------------
 \subsection{Part II}
-\begin{itemize}
-    \item \textbf{Objective:} \dots
-    \item \textbf{Methodology:} \dots
-    \item \textbf{Observations:} \dots
-    \item \textbf{Discussion:} \dots
-\end{itemize}
 
+\subsubsection{Objective}
+    To install essential development tools required for subsequent software compilation and version control, including \texttt{Git} and \texttt{build-essential}.
+
+\subsubsection{Methodology}
+The following command was executed in the terminal to install the necessary packages:
+\begin{center}
+    \verb|sudo apt install build-essential cmake git|
+\end{center}
+
+This command installs the GNU compiler collection, build utilities, CMake, and Git.
+
+\subsubsection{Observations}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./source/img/partII.png}
+    \caption{Installation of Essential Packages}
+    \label{fig:essential_packages_installation}
+\end{figure}
+
+\subsubsection{Discussion}
+The packages were successfully installed, providing a complete C/C++ build environment and version control support.  
+These tools form the foundation for compiling robotics-related source code and managing project repositories in subsequent experiments.
+
+%----------------------------------------------------------------------------------------
 \subsection{Part III}
+\subsubsection{Objective}
+To get familiar with the basic usage of Git and the process of compiling a simple C++ project using \texttt{CMake}.
+
+\subsubsection{Methodology}
 \begin{itemize}
-    \item \textbf{Objective:} \dots
-    \item \textbf{Methodology:} \dots
-    \item \textbf{Observations:} \dots
-    \item \textbf{Discussion:} \dots
+    \item \textbf{Cloning the Repository:}
+    \begin{center}
+    \verb|git clone git@github.com:RamessesN/VesselContest_F1.git|
+    \end{center}
+    \textit{Note:} This repository is one of my personal projects on GitHub and is used here only for testing Git operations.
+
+    \item \textbf{Project Structure:}
+    The project folder was organized as follows:
+    \begin{verbatim}
+lab1_demo/
+- CMakeLists.txt
+- main.cpp
+- my_lib.hpp
+- my_lib.cpp
+    \end{verbatim}
+
+    \item \textbf{CMake Configuration File (\texttt{CMakeLists.txt}):}
+    \begin{verbatim}
+cmake_minimum_required(VERSION 3.10)
+
+project(hello_world VERSION 1.0 LANGUAGES CXX)
+
+add_library(mylib my_lib.cpp my_lib.hpp)
+add_executable(main main.cpp)
+target_link_libraries(main PRIVATE mylib)
+    \end{verbatim}
+
+    \item \textbf{Source Code Files:} \\
+    \texttt{main.cpp}
+    \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+#include <iostream>
+#include "my_lib.hpp"
+
+int main() {
+    std::cout << "Hello world!" << std::endl;
+    std::cout << my_lib_function() << std::endl;
+    return 0;
+}
+    \end{minted}
+
+    \texttt{my\_lib.cpp}
+    \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+#include <string>
+#include "my_lib.hpp"
+
+std::string my_lib_function() {
+    return "In library";
+}
+    \end{minted}
+
+    \texttt{my\_lib.hpp}
+    \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+#pragma once
+#include <string>
+
+std::string my_lib_function();
+    \end{minted}
+
+    \item \textbf{Compilation Commands:}
+    The following commands were used to configure and build the project:
+    \begin{center}
+    \begin{verbatim}
+mkdir build && cd build
+cmake ..
+make
+./main
+    \end{verbatim}
+    \end{center}
 \end{itemize}
 
+\subsubsection{Observations}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./source/img/partIII_1.png}
+        \caption*{(a) Git clone command execution}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{./source/img/partIII_2.png}
+        \caption*{(b) Compilation process}
+    \end{minipage}
+    \caption{Git cloning and project compilation}
+    \label{fig:git_clone_and_compilation}
+\end{figure}
+
+\subsubsection{Discussion}
+The Git repository was successfully cloned from GitHub and the C++ project was compiled without any errors.
+
+%----------------------------------------------------------------------------------------
 \subsection{Part IV}
+\subsubsection{Objective}
+\begin{enumerate}
+    \item \textbf{Git} \\
+    Clone the repository \href{https://github.com/ouc-vlab-course/vnav-codes}{github@ouc-vlab-course/vnav-codes} to a folder
+
+    \item \textbf{Shell} \\
+    Download file \href{https://raw.githubusercontent.com/dlang/dmd/master/druntime/benchmark/extra-files/dante.txt}{@dante.txt} (try using $wget$ in bash, if network not accessable, 
+    try add \href{https://ghp.ci/}{https://ghp.ci/} before the file link), then finish these exercise:
+
+    exercise 1(use command $wc$): create file $exercise1.txt$, calculate thses information: 
+    (1) this file contains how many lines \\
+    (2) this file contains how many words \\
+    (3) how many lines are not blank
+
+    exercise 2: using apt to install fortune-mod, Run $fortune$ 5 more times and each time redirect the output to a file called $fortunes.txt$ in \verb|~/vnav-personal/lab1| 
+    (Hint: do not recreate the file 5 times - each time a new proverb should be added to the end of $fortunes.txt$)
+    
+    \item \textbf{C++}
+    \begin{itemize}
+        \item Operators
+        \begin{enumerate}
+            \item What are the values of $i$ and $j$ after running the following code.
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i = 0, j;
+j = ++i;
+j = i++;
+            \end{minted}
+
+            \item What does the following code print?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i = 42;
+std::string output = (i < 42) ? "a" : "b";
+std::cout << output << std::endl;
+            \end{minted}
+        \end{enumerate}
+
+        \item References and Pointers
+        \begin{enumerate}
+            \item What does the following code print?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i;
+int& ri = i;
+i = 5;
+ri = 10;
+std::cout << i << " " << ri << std::endl;
+            \end{minted}
+
+            \item What does the following code print?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i = 42;
+int* j = &i;
+*j = *j**j;
+std::cout << *j << std::endl;
+            \end{minted}
+
+            \item What does the following code print?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i[4] = {42, 24, 42, 24};
+*(i + 2) = *(i + 1) - i[3];
+std::cout << *(i + 2) << std::endl;
+        \end{minted}
+
+        \item What does the following code print?
+        \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+void reset(int &i) {
+    i = 0;
+}
+
+int j = 42;
+reset(j);
+std::cout << j << std::endl;
+            \end{minted}
+        \end{enumerate}
+        
+        \item Numbers
+        \begin{enumerate}
+            \item What are the differences between $int$, $long$, $long long$, and $short$?
+
+            \item What are the differences between a $float$ and $double$? What is the value of $i$ after running the following code snippet?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i;
+i = 3.14;
+            \end{minted}
+
+            \item What are the differences between an unsigned and signed type? What is the value of $c$ in the following code snippet assuming $chars$ are 8-bit?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+unsigned char c = -1;
+            \end{minted}
+
+            \item What will the value of $i$ be after running the following code snippet?
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+int i = 42;
+if (i) {
+ i = 0;
+} else {
+ i = 43;
+}
+            \end{minted}
+        \end{enumerate}
+    \end{itemize}
+
+    \item \textbf{C++ Extension} \\
+    Create a folder called  $RandomVector$ , and put the code of lab1 to this folder. 
+
+    The class $RandomVector$ defined in the header file $random_vector.h$ abstract a vector of doubles. 
+    The following methods are required to implement:
+    
+    \begin{itemize}
+        \item $RandomVector(int size, double max_val = 1)$ (constructor): initialize a vector of doubles of size $size$ with random values between 0 and $max\_val$ (default value 1)
+        \item $double mean()$ returns the mean of the values in random vector
+        \item $double max()$ returns the max of the values in random vector
+        \item $double min()$ returns the min of the values in random vector
+        \item $void print()$ prints all the values in the random vector
+        \item $void printHistogram(int bins)$ computes the histogram of the values using $bins$  \\
+        number of bins between $min()$ and $max()$ and print the histogram itself (see the example below).
+    \end{itemize}
+
+    To do so complete all the TODOs in the file $random_vector.cpp$. When you are done compile the application by running \\
+    \begin{verbatim}
+g++ -std=c++11 -Wall -pedantic \
+    -o random_vector \
+    main.cpp random_vector.cpp
+    \end{verbatim}
+
+    \textit{Note:} Do not use the function from the $<algorithm>$ header is expected. 
+    If complete correctly something of the exercise should be like:
+    \begin{verbatim}
+$ ./random_vector
+0.458724 0.779985 0.212415 0.0667949 0.622538 0.999018 0.489585 \
+0.460587 0.0795612 0.185496 0.629162 0.328032 0.242169 0.139671 \
+0.453804 0.083038 0.619352 0.454482 0.477426 0.0904966
+Mean: 0.393617
+Min: 0.0667949
+Max: 0.999018
+Histogram:
+***     ***
+***     ***
+***     ***
+***     ***
+***     ***
+***     ***
+***     *** ***
+*** *** *** *** ***
+    \end{verbatim}
+\end{enumerate}
+
+\subsubsection{Methodology}
 \begin{itemize}
-    \item \textbf{Objective:} \dots
-    \item \textbf{Methodology:} \dots
-    \item \textbf{Observations:} \dots
-    \item \textbf{Discussion:} \dots
+    \item \textbf{Git} \\
+    The repository \texttt{vnav-codes} was cloned using the command:
+    \begin{center}
+        \verb|git clone https://github.com/ouc-vlab-course/vnav-codes|
+    \end{center}
+
+    \item \textbf{Shell} \\
+    The file \texttt{dante.txt} was downloaded using the command:
+    \begin{center}
+        \begin{verbatim}
+wget \
+https://raw.githubusercontent.com/dlang/dmd/master/druntime/ \
+benchmark/extra-files/dante.txt
+        \end{verbatim}
+    \end{center}
+
+    \textbf{For exercise1:}
+    run the following commands to check the $lines$, $words$ and $bytes$ of the $dante.txt$:
+    \begin{center}
+        \verb|wc dante.txt >> exercise1.txt|
+    \end{center}
+    To count the number of non-blank lines, run:
+    \begin{center}
+        \begin{verbatim}
+echo "Non-blank lines: $(grep -v '^$' dante.txt | wc -l)" \
+>> exercise1.txt
+        \end{verbatim}
+    \end{center}
+    Therefore, all the required information can be got from the above commands:
+    \begin{itemize}
+        \item \verb|echo "Total lines: $(wc -l < dante.txt)" > exercise1.txt|
+        \item \verb|echo "Total words: $(wc -w < dante.txt)" >> exercise1.txt|
+        \item \begin{center}
+            \begin{verbatim}
+echo "Non-blank lines: $(grep -v '^$' dante.txt | wc -l)" \
+     >> exercise1.txt
+            \end{verbatim}
+        \end{center}
+    \end{itemize}
+    Then, use $more$ command to check the content of \texttt{exercise1.txt}:
+    \begin{center}
+        \verb|more exercise1.txt|
+    \end{center}
+
+    \vspace{1em}
+
+    \textbf{For exercise2:}
+    run the following command to get $fortune-mod$ installed:
+    \begin{center}
+        \verb|sudo apt install fortune-mod|
+    \end{center}
+    Then, run the command below 5 times to get a random quote and use $more$ to check:
+    \begin{center}
+        \verb|fortune-mod >> fortunes.txt| \\
+        \verb|more fortunes.txt|
+    \end{center}
+
+    \item \textbf{C++} \\
+    \begin{itemize}
+        \item \textbf{Operators}
+        \begin{enumerate}
+            \item i = 2, j = 1 \\
+            At first, i equals to 0. After executing \texttt{j = ++i;}, i is incremented to 1 and then assigned to j.
+            After executing \texttt{j = i++;}, j is assigned the current value of i(which is 1), and then i is incremented to 2.
+
+            \item b \\
+            i = 42 is not less than 42, so the condition \texttt{(i < 42)} evaluates to false.
+            Therefore, the expression evaluates to "b".
+        \end{enumerate}
+
+        \item \textbf{References and Pointers}
+        \begin{enumerate}
+            \item i = 10, ri = 10 \\
+            At first, i is declared but not initialized. Then, ri is defined as a reference(\&) to i.
+            When \texttt{i = 5;} is executed, i is assigned the value 5. 
+            When \texttt{ri = 10;} is executed, it modifies the value of i through the reference ri, setting i to 10.
+            Thus, both i and ri will print 10.
+
+            \item 1764 \\
+            Initially, i is set to 42, and j is a pointer(\*) that points to i.
+            The expression \texttt{*j = (*j) * (*j);} dereferences j to get the value of i (which is 42), squares it (42 * 42 = 1764).
+            Then assign the result back to the location pointed to by j.
+
+            \item 0 \\
+            An array i of 4 integers is initialized with the values {42, 24, 42, 24}.
+            The expression \texttt{*(i + 2) = *(i + 1) - i[3];} calculates the value at index 1 (which is 24) minus the value at index 3 (which is also 24), resulting in 0.
+            This value is then assigned to the location at index 2 of the array.
+
+            \item 0 \\
+            The function \texttt{reset} takes an integer reference(\&) as its parameter and sets the value of that integer to 0.
+            When \texttt{reset(j);} is called, it modifies the value of j to 0.
+        \end{enumerate}
+
+        \item \textbf{Numbers}
+        \begin{enumerate}
+            \item Comparison of Integer Types \\
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{l c c}
+                    \toprule
+                    \textbf{Type} & \textbf{Size (bytes)} & \textbf{Range} \\
+                    \midrule
+                    int & 4 & -2,147,483,648 to 2,147,483,647 \\
+                    long & 8 & -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 \\
+                    long long & 8 & -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 \\
+                    short & 2 & -32,768 to 32,767 \\
+                    \bottomrule
+                \end{tabular}
+                \caption{Comparison of Integer Types}
+                \label{tab:integer_types}
+            \end{table}
+
+            \item Comparison of Floating-Point Types \\
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{l c c}
+                    \toprule
+                    \textbf{Type} & \textbf{Size (bytes)} & \textbf{Precision} \\
+                    \midrule
+                    float & 4 & about 7 decimal digits \\
+                    double & 8 & about 15 decimal digits \\
+                    \bottomrule
+                \end{tabular}
+                \caption{Comparison of Floating-Point Types}
+                \label{tab:floating_point_types}
+            \end{table}
+            
+            i = 3. \\
+            After executing \texttt{i = 3.14;}, the floating-point value 3.14 is truncated to 3 when assigned to the integer variable i.
+            
+            \item Signed \& Unsigned Types \\
+            Signed types can represent both positive and negative values, while unsigned types can only represent non-negative values.
+            
+            \vspace{1em}
+
+            c = 255. \\
+            Assigning -1 to an unsigned char will result in wrap-around behavior.
+            Since unsigned char can only hold values from 0 to 255, -1 wraps around to 255.
+            Therefore, the value of c will be 255.
+
+            \item i = 0 \\
+            The condition in the if statement checks whether i is non-zero.
+            Since i is initially 42 != 0, the condition evaluates to true, and the code inside the if block is executed, setting i to 0.
+        \end{enumerate}
+    \end{itemize}
+
+    \item \textbf{C++ Extension} \\
+    \begin{enumerate}
+        \item Created a folder named \textit{RandomVector} using the command:
+        \begin{center}
+            \verb|mkdir RandomVector|
+        \end{center}
+        Put the code in lab1 into this folder using the command:
+        \begin{center}
+            \verb|mv lab1/* RandomVector/|
+        \end{center}
+
+        \item Implemented the required methods in the \texttt{random\_vector.cpp} file:
+        \begin{itemize}
+            \item \texttt{RandomVector(int size, double max\_val = 1)}: \\
+            In order to utilize $srand(314159);$ in \textit{main.cpp}, I decided to call \texttt{std::rand()} directly without reseeding it in the constructor.
+            The random values are generated using the formula:
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+static_cast<double>(rand()) / RAND_MAX * max_val
+            \end{minted}
+            This formula generates a random double value between 0 and \texttt{max\_val}.
+
+            \item \texttt{void print()}: \\
+            Iterated through the vector and printed each value followed by a space.
+            Besides, every 9 values, a newline character is printed to enhance readability.
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+for(size_t i = 0; i < vect.size(); i++) {
+    printf("%.6lf ", vect[i]);
+    if((i + 1) % 9 == 0)
+      cout << endl;
+  }
+            \end{minted}
+
+            \item \texttt{double mean()}: \\
+            Calculated the sum of all elements in the vector and divided it by the size of the vector to obtain the mean value.
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+for(size_t i = 0; i < vect.size(); i++)
+    sum += vect[i];
+return sum / vect.size();
+            \end{minted}
+
+            \item \texttt{double max()}: \\
+            Found the maximum element in the vector by iterating through it.
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+if(vect[i] > max_val)
+    max_val = vect[i];
+            \end{minted}
+
+            \item \texttt{double min()}: \\
+            Found the minimum element in the vector by iterating through it.
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+if(vect[i] < min_val)
+    min_val = vect[i];
+            \end{minted}
+
+            \item \texttt{void printHistogram(int bins)}: \\
+            Computed the histogram by first determining the range of values (min to max) and then calculating the width of each bin.
+            Counted the number of elements that fall into each bin and stored the counts in a vector.
+            Finally, printed the histogram by scaling the counts to fit within the maximum count.
+            
+            \begin{minted}[fontsize=\footnotesize,frame=single]{cpp}
+double bin_size = (max_val - min_val) / bins;
+vector<int> counts(bins, 0);
+for(double val : vect) {
+    int index = static_cast<int>((val - min_val) / bin_size);
+    if(index == bins) index--;
+    counts[index]++;
+}
+int max_count = 0;
+  for(int count : counts)
+    if(count > max_count) max_count = count;
+
+  for(int level = max_count; level > 0; level--) {
+    for(int bin = 0; bin < bins; bin++) {
+      if(counts[bin] >= level)
+        cout << "***";
+      else
+        cout << "   ";
+      cout << " ";
+    }
+    cout << endl;
+  }
+            \end{minted}
+        \end{itemize}
+
+        \item Built the project using the command:
+        \begin{verbatim}
+g++ -std=c++11 -Wall -pedantic -o \
+random_vector main.cpp random_vector.cpp
+        \end{verbatim}
+
+        \item Executed the program using the command: \verb|./random_vector| \\
+        Then, the result was obtained as expected:
+        \begin{verbatim}
+0.458724 0.779985 0.212415 0.0667949 0.622538 0.999018 0.489585 \
+0.460587 0.0795612 0.185496 0.629162 0.328032 0.242169 0.139671 \
+0.453804 0.083038 0.619352 0.454482 0.477426 0.0904966
+Mean: 0.393617
+Min: 0.0667949
+Max: 0.999018
+Histogram:
+***     ***
+***     ***
+***     ***
+***     ***
+***     ***
+***     ***
+***     *** ***
+*** *** *** *** ***
+        \end{verbatim}
+
+    \textit{Note:} The complete code can be found at the \hyperref[section:source_code]{end} of this report.
+    \end{enumerate} 
 \end{itemize}
+    
+\subsubsection{Observations}
+\begin{itemize}
+    \item \textbf{Git}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{./source/img/partIV_1.png}
+        \caption{Git Clone of vnav-codes Repository}
+        \label{fig:vnav_codes_clone}
+    \end{figure}
+
+    \item \textbf{Shell}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{./source/img/partIV_2.png}
+        \caption{Wget Download of dante.txt}
+        \label{fig:wget_dante}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{./source/img/partIV_3.jpeg}
+        \caption{Shell Exercises}
+        \label{fig:Shell_exercises}
+    \end{figure}
+
+    \item \textbf{C++ Extension}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.45\textwidth]{./source/img/extension_1.png}
+        \caption{RandomVector Folder Building}
+        \label{fig:RandomVector_building}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.6\textwidth]{./source/img/extension_2.png}
+        \caption{RandomVector Execution Result}
+        \label{fig:RandomVector_execution}
+    \end{figure}
+
+\end{itemize}
+
+\subsubsection{Discussion}
+In this part, I implemented statistical functions and histogram visualization for the \textit{RandomVector} class. 
+To maintain consistency with the random seed already defined in \textit{main.cpp}, I used the traditional C-style random number generator --- \texttt{srand()} combined with \texttt{rand()}.
+
+During the implementation, I avoided using high-level functions from the \texttt{<algorithm>} header, such as \texttt{max\_element()} and \texttt{min\_element()}. 
+Instead, I manually implemented equivalent functionality using iterative traversal. 
+
+The histogram plotting function divides the numerical range between the minimum and maximum values into several equal-width bins and counts the number of elements falling into each bin. 
+This process is conceptually related to the idea of bucket sort — both involve partitioning a range into subintervals and assigning elements to them — but the purpose here is to visualize the frequency distribution of data. 
 
 %----------------------------------------------------------------------------------------
 \section{Reflection and Analysis}
-Discuss experimental errors, limitations, and possible improvements.
+In Part I, I installed a virtual machine environment. Since $Apple Silicon$ Mac does not support traditional $x86$ virtual machine $ISOs$, I selected $Parallels Desktop$ as the virtualization platform and installed $Ubuntu 24.04 ARM$.
+This process allowed me to gain practical experience in setting up a Linux system within a non-native architecture, deepening my understanding of cross-platform development environments.
+
+In Part II, I configured the development environment by installing essential tools such as $build-essential$, $CMake$, and $Git$ using the $APT$ package manager.
+Through this process, I learned how software package management and development tool configuration work in Linux systems.
+
+In Part III, I cloned a GitHub repository and built a simple C++ project using $CMake$.
+This part familiarized me with the workflow of using $Git$ for version control, as well as the compilation and linking process in C++ development.
+
+In Part IV, I practiced $Git$, $Shell$ scripting, and C++ programming through a series of hands-on exercises.
+These included cloning repositories, processing text files using Shell commands and implementing a C++ class with various functionalities.
+This part reinforced my understanding of version control and command-line operations while improving my ability to design and implement algorithms in C++.
 
 %----------------------------------------------------------------------------------------
 \section{Conclusion}
-Summarize key findings, learning outcomes, and recommendations for future work.
+Through this laboratory project, I developed a comprehensive understanding of the software development workflow — from system setup and environment configuration to source code management and program implementation.
+Each part built upon the previous one, progressively enhancing both my technical proficiency and problem-solving capabilities.
+By combining Linux command-line tools, Git-based project management, and C++ programming, I not only strengthened my foundational programming skills but also gained valuable experience in practical software engineering workflows.
+\newpage
 
 %----------------------------------------------------------------------------------------
-% References
+% Source Code
 %----------------------------------------------------------------------------------------
-\newpage \thispagestyle{empty}
-\bibliographystyle{unsrtnat}
-\bibliography{references}
+\pagestyle{empty}
+\section{Source Code}\label{sec:source_code}
+\begin{itemize}
+    \item \textit{random\_vector.cpp}
+    \begin{minted}[fontsize=\footnotesize,frame=single,linenos]{cpp}
+#include "random_vector.h"
+#include <random>
+#include <numeric>
+#include <iomanip>
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+
+/**
+ * Constructor to initialize the vector with random values
+ * @param size The size of the vector
+ * @param max_val The maximum value for the random numbers
+ */
+RandomVector::RandomVector(int size, double max_val) {
+    vect.resize(size);
+    for(int i = 0; i < size; i++) {
+        vect[i] = (double)rand() / RAND_MAX * max_val;
+    }
+}
+
+/**
+ * Print the elements of the vector
+ */
+void RandomVector::print() {
+  for(size_t i = 0; i < vect.size(); i++) {
+    printf("%.6lf ", vect[i]);
+    if((i + 1) % 9 == 0)
+      cout << endl;
+  }
+
+  cout << endl;
+}
+
+
+/**
+ * Calculate the mean of the vector elements
+ * @return The mean value
+ */
+double RandomVector::mean() {
+  if(vect.empty()) return 0.0;
+
+  double sum = 0.0;
+  for(size_t i = 0; i < vect.size(); i++) {
+    sum += vect[i];
+  }
+
+  return sum / vect.size();
+}
+
+/**
+ * Find the maximum value in the vector
+ * @return The maximum value
+ */
+double RandomVector::max() {
+  if(vect.empty()) return 0.0;
+
+  double max_val = vect[0];
+  for(size_t i = 1; i < vect.size(); i++) {
+    if(vect[i] > max_val){
+      max_val = vect[i];
+    }
+  }
+
+  return max_val;
+}
+
+/**
+ * Find the minimum value in the vector
+ * @return The minimum value
+ */
+double RandomVector::min() {
+  if(vect.empty()) return 0.0;
+
+  double min_val = vect[0];
+  for(size_t i = 1; i < vect.size(); i++) {
+    if(vect[i] < min_val){
+      min_val = vect[i];
+    }
+  }
+
+  return min_val;
+}
+
+/**
+ * Print a histogram of the vector elements
+ * @param bins The number of bins in the histogram
+ */
+void RandomVector::printHistogram(int bins){
+  if(vect.empty() || bins <= 0) return;
+
+  double min_val = min();
+  double max_val = max();
+  double bin_size = (max_val - min_val) / bins;
+
+  vector<int> counts(bins, 0); // to store counts for each bin
+
+  for(double val : vect) {
+    int index = static_cast<int>((val - min_val) / bin_size);
+
+    if(index == bins) index--;
+
+    counts[index]++;
+  }
+
+  int max_count = 0;
+  for(int count : counts)
+    if(count > max_count) max_count = count; 
+    // find the maximum count for scaling
+
+  for(int level = max_count; level > 0; level--) {
+    for(int bin = 0; bin < bins; bin++) {
+      if(counts[bin] >= level)
+        cout << "***";
+      else
+        cout << "   ";
+      cout << " ";
+    }
+    cout << endl;
+  }
+}
+    \end{minted}
+
+    \item \textit{random\_vector.h}
+    \begin{minted}[fontsize=\footnotesize,frame=single,linenos]{cpp}
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class RandomVector{
+  vector<double> vect;
+
+  public:
+    RandomVector(int size, double max_val = 1);
+    void print();
+    double mean();
+    double max();
+    double min();
+    void printHistogram(int bins);
+};
+    \end{minted}
+
+    \item \textit{main.cpp}
+    \begin{minted}[fontsize=\footnotesize,frame=single,linenos]{cpp}
+#include <cstdlib> // required for srand
+#include <iostream>
+#include "random_vector.h"
+
+using namespace std;
+
+int main(void) { 
+  srand(314159);
+
+  RandomVector rv(20);
+  rv.print();
+  cout << "Mean: " << rv.mean() << endl;
+  cout << "Min: " << rv.min() << endl;
+  cout << "Max: " << rv.max() << endl;
+
+  cout << "Histogram:" << endl;
+  rv.printHistogram(5);
+  cout << endl;
+
+  return 0;
+}
+    \end{minted}
+\end{itemize}
 
 \end{document}
