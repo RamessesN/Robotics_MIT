@@ -1,0 +1,178 @@
+\documentclass[12pt,a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+% PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{graphicx,float,booktabs,array,multirow,url}
+\usepackage{gensymb}
+\usepackage[british]{babel}
+\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage{caption,subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue]{hyperref}
+
+\usepackage{minted}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+
+\usepackage{silence}
+\WarningFilter{gensymb}{Not defining}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM ABSTRACT FORMAT
+%----------------------------------------------------------------------------------------
+\makeatletter
+\renewenvironment{abstract}{
+    \begin{center}
+        \large\bfseries \abstractname
+    \end{center}
+    \begin{quote}\small
+}{
+    \end{quote}
+}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+% USER INFORMATION
+%----------------------------------------------------------------------------------------
+\newcommand{\studentname}{Yuwei ZHAO}
+\newcommand{\studentnumber}{23020036096}
+\newcommand{\labgroup}{Group \#31}
+\newcommand{\labdate}{2025-11-06}
+\newcommand{\course}{Robotics Integration Group Project I}
+\newcommand{\labtitle}{Lab 2 Report}
+
+%----------------------------------------------------------------------------------------
+% TITLE
+%----------------------------------------------------------------------------------------
+\title{
+    \vspace{-1cm}
+    \textbf{\labtitle}\\[0.3em]
+    \Large \course
+}
+\author{
+    \studentname~(\studentnumber)\\
+    \labgroup \quad \labdate
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+% PAGE STYLE
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\labtitle}
+\fancyhead[C]{\studentname~(\studentnumber)}
+\fancyhead[R]{\labgroup}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.75em}
+
+%----------------------------------------------------------------------------------------
+% DOCUMENT BODY
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+% TODO: Write a brief summary of the lab report.
+
+See Resources on \href{https://github.com/RamessesN/Robotics_MIT}{git@github.com:RamessesN/Robotics\_MIT}.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+% TODO: Write a brief introduction to the lab report.
+%----------------------------------------------------------------------------------------
+\section{Procedure}
+%----------------------------------------------------------------------------------------
+\subsection{Part I}
+\subsubsection{Objective}
+% TODO: Write the objective of Part I.
+
+\subsubsection{Methodology}
+% TODO: Write the methodology of Part I.
+
+\subsubsection{Observations}
+% TODO: Write the observations of Part I.
+
+\subsubsection{Discussion}
+% TODO: Write the discussion of Part I.
+
+%----------------------------------------------------------------------------------------
+\subsection{Part II}
+\subsubsection{Objective}
+% TODO: Write the objective of Part II.
+
+\subsubsection{Methodology}
+% TODO: Write the methodology of Part II.
+
+\subsubsection{Observations}
+% TODO: Write the observations of Part II.
+
+\subsubsection{Discussion}
+% TODO: Write the discussion of Part II.
+
+%----------------------------------------------------------------------------------------
+\subsection{Part III}
+\subsubsection{Objective}
+% TODO: Write the objective of Part III.
+
+\subsubsection{Methodology}
+% TODO: Write the methodology of Part III.
+
+\subsubsection{Observations}
+% TODO: Write the observations of Part III.
+
+\subsubsection{Discussion}
+% TODO: Write the discussion of Part III.
+
+%----------------------------------------------------------------------------------------
+\subsection{Part IV}
+\subsubsection{Objective}
+% TODO: Write the objective of Part IV.
+
+\subsubsection{Methodology}
+% TODO: Write the methodology of Part IV.
+
+\subsubsection{Observations}
+% TODO: Write the observations of Part IV.
+
+\subsubsection{Discussion}
+% TODO: Write the discussion of Part IV.
+
+%----------------------------------------------------------------------------------------
+\section{Reflection and Analysis}
+% TODO: Write a reflection and analysis of the lab report.
+
+%----------------------------------------------------------------------------------------
+\section{Conclusion}
+% TODO: Write the conclusion of the lab report.
+\newpage
+
+%----------------------------------------------------------------------------------------
+% Source Code
+%----------------------------------------------------------------------------------------
+\pagestyle{empty}
+\section{Source Code}
+\label{section:source_code}
+
+
+
+\end{document}
