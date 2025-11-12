@@ -21,7 +21,7 @@ else
   CATKIN_SHELL=sh
 fi
 
-: ${_CATKIN_SETUP_DIR:=/Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/.private/catkin_tools_prebuild}
+: ${_CATKIN_SETUP_DIR:=/Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/.private/catkin_tools_prebuild}
 : ${_CONDA_SETUP_DIR:=$CONDA_PREFIX/etc/conda/activate.d/}
 _SETUP_UTIL="$_CATKIN_SETUP_DIR/_setup_util.py"
 

@@ -53,10 +53,10 @@ RM = /opt/anaconda3/envs/ros_env/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild
+CMAKE_SOURCE_DIR = /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild
+CMAKE_BINARY_DIR = /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild
 
 # Utility rule file for clean_test_results.
 
@@ -67,7 +67,7 @@ include CMakeFiles/clean_test_results.dir/compiler_depend.make
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/opt/anaconda3/envs/ros_env/bin/python3.9 /opt/anaconda3/envs/ros_env/share/catkin/cmake/test/remove_test_results.py /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild/test_results
+	/opt/anaconda3/envs/ros_env/bin/python3.9 /opt/anaconda3/envs/ros_env/share/catkin/cmake/test/remove_test_results.py /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/build/catkin_tools_prebuild/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

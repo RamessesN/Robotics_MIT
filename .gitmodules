@@ -4,3 +4,6 @@
 [submodule "Labs/Repo_MIT"]
 	path = Labs/Repo_MIT
 	url = https://github.com/MIT-SPARK/VNAV-labs
+[submodule "Labs/Repo_MIT_OUC"]
+	path = Labs/Repo_MIT_OUC
+	url = https://github.com/ouc-vlab-course/vnav-codes.git

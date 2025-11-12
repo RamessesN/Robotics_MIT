@@ -1,0 +1,5 @@
+Symlinking /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/lib/pkgconfig/two_drones_pkg.pc
+Symlinking /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/lib/two_drones_pkg/plots_publisher_node
+Symlinking /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/lib/two_drones_pkg/frames_publisher_node
+Symlinking /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/share/two_drones_pkg/cmake/two_drones_pkgConfig.cmake
+Symlinking /Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/share/two_drones_pkg/cmake/two_drones_pkgConfig-version.cmake

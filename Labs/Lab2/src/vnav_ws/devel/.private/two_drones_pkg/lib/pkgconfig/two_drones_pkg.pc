@@ -1,0 +1,8 @@
+prefix=/Users/stanley/Documents/COURSE/PROGRAMME/C_Family/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/.private/two_drones_pkg
+
+Name: two_drones_pkg
+Description: Description of two_drones_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
