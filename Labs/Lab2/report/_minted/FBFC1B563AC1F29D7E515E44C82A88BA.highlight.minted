@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }\PYGZti{}/shrike/ros\PYGZus{}ws/src
+catkin\PYGZus{}create\PYGZus{}pkg\PYG{+w}{ }ros\PYGZus{}sample\PYG{+w}{ }roscpp\PYG{+w}{ }std\PYGZus{}msgs
+\end{MintedVerbatim}

@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+./scripts/install\PYGZus{}ubuntu24.sh
+./src/catkin/bin/catkin\PYGZus{}make\PYGZus{}isolated\PYG{+w}{ }\PYGZhy{}\PYGZhy{}install\PYG{+w}{ }\PYGZhy{}DCMAKE\PYGZus{}BUILD\PYGZus{}TYPE\PYG{o}{=}Release
+\PYG{n+nb}{source}\PYG{+w}{ }./install\PYGZus{}isolated/setup.bash
+\end{MintedVerbatim}

@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sudo\PYG{+w}{ }rosdep\PYG{+w}{ }init
+rosdep\PYG{+w}{ }update
+\end{MintedVerbatim}

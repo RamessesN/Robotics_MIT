@@ -1,0 +1,6 @@
+devel_space: /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel
+install: false
+install_space: /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/install
+profile: default
+source_space: /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/src
+workspace: /Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws

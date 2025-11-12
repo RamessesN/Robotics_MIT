@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sudo\PYG{+w}{ }sh\PYG{+w}{ }\PYGZhy{}c\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}echo \PYGZdq{}deb http://packages.ros.org/ros/ubuntu \PYGZdl{}(lsb\PYGZus{}release \PYGZhy{}sc) main\PYGZdq{} \PYGZgt{} /etc/apt/sources.list.d/ros\PYGZhy{}latest.list\PYGZsq{}}
+curl\PYG{+w}{ }\PYGZhy{}s\PYG{+w}{ }https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc\PYG{+w}{ }\PYG{p}{|}\PYG{+w}{ }sudo\PYG{+w}{ }apt\PYGZhy{}key\PYG{+w}{ }add\PYG{+w}{ }\PYGZhy{}
+sudo\PYG{+w}{ }apt\PYG{+w}{ }update
+sudo\PYG{+w}{ }apt\PYG{+w}{ }install\PYG{+w}{ }ros\PYGZhy{}noetic\PYGZhy{}desktop\PYGZhy{}full
+\end{MintedVerbatim}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>two_drones_pkg</name>
+  <version>0.0.0</version>
+  <description>MIT 16.485 VNAV 2019 - Lab 2 package</description>
+  <maintainer email="antonap@mit.edu">Pasquale Antonante</maintainer>
+  <license>MIT</license>
+
+  <export>
+  <build_type>ament_cmake</build_type>
+  </export>
+</package>

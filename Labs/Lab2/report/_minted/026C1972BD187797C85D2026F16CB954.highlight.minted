@@ -1,0 +1,18 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cmake\PYGZus{}minimum\PYGZus{}required}\PYG{p}{(}\PYG{n}{VERSION}\PYG{+w}{ }\PYG{l+m+mf}{3.0.2}\PYG{p}{)}
+\PYG{n}{project}\PYG{p}{(}\PYG{n}{ros\PYGZus{}sample}\PYG{p}{)}
+
+\PYG{n}{find\PYGZus{}package}\PYG{p}{(}\PYG{n}{catkin}\PYG{+w}{ }\PYG{n}{REQUIRED}\PYG{+w}{ }\PYG{n}{COMPONENTS}
+\PYG{+w}{  }\PYG{n}{roscpp}
+\PYG{+w}{  }\PYG{n}{std\PYGZus{}msgs}
+\PYG{p}{)}
+
+\PYG{n}{catkin\PYGZus{}package}\PYG{p}{()}
+
+\PYG{n}{include\PYGZus{}directories}\PYG{p}{(}
+\PYG{+w}{  }\PYG{n}{\PYGZdl{}}\PYG{p}{\PYGZob{}}\PYG{n}{catkin\PYGZus{}INCLUDE\PYGZus{}DIRS}\PYG{p}{\PYGZcb{}}
+\PYG{p}{)}
+
+\PYG{n}{add\PYGZus{}executable}\PYG{p}{(}\PYG{n}{ros\PYGZus{}sample\PYGZus{}node}\PYG{+w}{ }\PYG{n}{src}\PYG{o}{/}\PYG{n}{ros\PYGZus{}sample}\PYG{p}{.}\PYG{n}{cpp}\PYG{p}{)}
+\PYG{n}{target\PYGZus{}link\PYGZus{}libraries}\PYG{p}{(}\PYG{n}{ros\PYGZus{}sample\PYGZus{}node}\PYG{+w}{ }\PYG{n}{\PYGZdl{}}\PYG{p}{\PYGZob{}}\PYG{n}{catkin\PYGZus{}LIBRARIES}\PYG{p}{\PYGZcb{})}
+\end{MintedVerbatim}

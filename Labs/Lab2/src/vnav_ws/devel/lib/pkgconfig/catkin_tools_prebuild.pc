@@ -1,0 +1,1 @@
+/Users/stanley/Documents/COURSE/PROGRAMME/C:C++/Robotics_MIT/Labs/Lab2/src/vnav_ws/devel/.private/catkin_tools_prebuild/lib/pkgconfig/catkin_tools_prebuild.pc
