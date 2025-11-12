@@ -1,3 +1,6 @@
 [submodule "Labs/Lab2/ros1_to_ubuntu2404"]
 	path = Labs/Lab2/ros1_to_ubuntu2404
 	url = https://github.com/Minoic-Intelligence/shrike.git
+[submodule "Labs/Repo_MIT"]
+	path = Labs/Repo_MIT
+	url = https://github.com/MIT-SPARK/VNAV-labs
