@@ -621,6 +621,28 @@ tf2_ros::TransformListener tf_listener{tf_buffer};
 
     These steps ensure that \textit{RViz} dynamically updates both trajectories in real time.  
     The resulting visualization is shown in Figure~\ref{fig:drones_path}.
+
+    \item \textbf{Mathematical derivations}
+    \begin{itemize}
+        \item In the problem formulation ,we mentioned that AV2’s trajectory is an arc of parabola in the $x$-$z$  plane of the world frame. Can you prove this statement?
+        % TODO: 
+
+        \item Compute $o_2^1(t)$ , i.e., the position of AV2 relative to AV1’s body frame as a function of $t$ .
+        % TODO
+
+        \item Show that $o_2^1(t)$  describes a planar curve and find the equation of its plane $\Pi$.
+        % TODO
+
+        \item Rewrite the above trajectory explicitly using a 2D frame of reference $(x_p, y_p)$ on the plane found before. Try to ensure that the curve is centered at the origin of this 2D frame and that $x_p$ , $y_p$ are axes of symmetry for the curve.
+        % TODO
+
+        \item Using the expression of $o_2^p(t)$ , prove that the trajectory of AV2 relative to AV1 is an ellipse and compute the lengths of its semi-axes.
+        % TODO
+    \end{itemize}
+
+    \item \textbf{More properties of quaternions}
+    % TODO:
+    
 \end{enumerate}
 
 \subsubsection{Observations}
