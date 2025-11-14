@@ -697,16 +697,18 @@ tf2_ros::TransformListener tf_listener{tf_buffer};
                 x_P(t) = \frac{1}{2} sin(2t) \\
                 y_p(t) = -\frac{\sqrt{5}}{2} cos(2t)
             \end{cases}
+            \nonumber
         \end{equation}
 
         \item Using the expression of $o_2^p(t)$ , prove that the trajectory of AV2 relative to AV1 is an ellipse and compute the lengths of its semi-axes. \\ [1em]
-        \textbf{Solution:} \\
+        \textbf{Proof:} \\
         From the previous question, we have 
         \begin{equation}
             \begin{cases}
                 x_p(t) = \frac{1}{2} sin(2t) \\
                 y_p(t) = -\frac{\sqrt{5}}{2} cos(2t)
             \end{cases}
+            \nonumber
         \end{equation}
         \begin{equation}
             \Rightarrow
@@ -714,6 +716,7 @@ tf2_ros::TransformListener tf_listener{tf_buffer};
                 sin(2t) = 2x_p(t) \\
                 cos(2t) = -\frac{2}{\sqrt{5}} y_p(t)
             \end{cases}
+            \nonumber
         \end{equation}
         $\therefore 4x_P^2(t) + \frac{4}{5} y_p^2(t) = 1$
 
@@ -725,12 +728,87 @@ tf2_ros::TransformListener tf_listener{tf_buffer};
                 x_p-semiperiod: a = \frac{1}{2} \\
                 y_p-semiperiod: b = \frac{\sqrt{5}}{2}
             \end{cases}
+            \nonumber
         \end{equation}
     \end{itemize}
 
-    \item \textbf{More properties of quaternions}
-    % TODO:
+    \item \textbf{More properties of quaternions} \\ [1em]
+    Assume that there are two linear maps: $\Omega_1: \mathbb{R}^4 \rightarrow \mathbb{R}^{4 \times 4}$ and $\Omega_2: \mathbb{R}^4 \rightarrow \mathbb{R}^{4 \times 4}$,
+    such that for any $q \in \mathbb{R}^4$.
+    \begin{equation}
+        \Omega_1(q) = \begin{bmatrix} q_4 & -q_3 & q_2 & q_1 \\ q_3 & q_4 & -q_1 & q_2 \\ -q_2 & q_1 & q_4 & q_3 \\ -q_1 & -q_2 & -q_3 & q_4 \end{bmatrix},
+        \Omega_2(q) = \begin{bmatrix} q_4 & q_3 & -q_2 & q_1 \\ -q_3 & q_4 & q_1 & q_2 \\ q_2 & -q_1 & q_4 & q_3 \\ -q_1 & -q_2 & -q_3 & q_4 \end{bmatrix}.
+        \nonumber
+    \end{equation}
+
+    The product between any two unit quaternions can be explicitly computed as:
+    \begin{equation}
+        q_a \otimes q_b = \Omega_1(q_a)q_b = \Omega_2(q_b)q_a
+        \nonumber
+    \end{equation}
     
+    \begin{itemize}
+        \item For any unit quaternion $q$ , both $\Omega_1(q)$  and $\Omega_2(q)$  are orthogonal matrices, i.e.,
+        \begin{equation}
+            \begin{cases}
+                \Omega_1(q)^T\Omega_1(q) = \Omega_1(q)\Omega_1(q)^T = I_4, \\
+                \Omega_2(q)^T\Omega_2(q) = \Omega_2(q)\Omega_2(q)^T = I_4.
+            \end{cases}
+            \nonumber
+        \end{equation}
+        Intuitively, what is the reason that both $\Omega_1(q)$ and $\Omega_2(q)$ are orthogonal? \\ [1em]
+        \textbf{Proof:} \\
+        Because the multiplication of unit quaternions represents a rotation operation, and rotation is a linear transformation in the vector space that preserves both length and angle. 
+        All linear transformations that preserve length correspond to orthogonal matrices.
+
+        That's if $q_a$ is a unit quaternion, for any $q_b$, we have:
+        \begin{equation}
+            ||q_a \otimes q_b|| = ||q_a|| \cdot ||q_b||
+            \nonumber
+        \end{equation}
+
+        \item For any unit quaternion $q$, both $\Omega_1(q)$ and $\Omega_2(q)$ convert $q$ to be the unit quaternion that corresponds to the 3D identity rotation, i.e. \\
+        $\Omega_1(q)^Tq = \Omega_2(q)^Tq = [0,0,0,1]^T.$ \\ [1em]
+        \textbf{Proof:} \\
+        \begin{equation}
+            \Omega_1(q)^T \cdot q = \begin{bmatrix} q_4 & q_3 & -q_2 & -q_1 \\ -q_3 & q_4 & q_1 & -q_2 \\ q_2 & -q_1 & q_4 & -q_3 \\ q_1 & q_2 & q_3 & q_4 \end{bmatrix} \cdot \begin{bmatrix} q_1 \\ q_2 \\ q_3 \\ q_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}
+            \nonumber
+        \end{equation}
+
+        \begin{equation}
+            \Omega_2(q)^T \cdot q = \begin{bmatrix} q_4 & -q_3 & q_2 & -q_1 \\ q_3 & q_4 & -q_1 & -q_2 \\ -q_2 & q_1 & q_4 & -q_3 \\ q_1 & q_2 & q_3 & q_4 \end{bmatrix} \cdot \begin{bmatrix} q_1 \\ q_2 \\ q_3 \\ q_4 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix}
+            \nonumber
+        \end{equation}
+
+        \item For any two vectors $x,y \in \mathbb{R}^4$ , show the two linear operators commute, i.e.
+        \begin{equation}
+            \begin{cases}
+                \Omega_1(x) \cdot \Omega_2(y) = \Omega_2(y) \cdot \Omega_1(x), \\
+                \Omega_1(x) \cdot \Omega_2(y)^T = \Omega_2(y)^T \cdot \Omega_1(x).
+            \end{cases}
+            \nonumber
+        \end{equation} \\ [1em]
+        \textbf{Proof:} \\
+        Though quaternion doesn't follow commutative law, it satisfies associative law.
+
+        For $\Omega_1(x) \cdot \Omega_2(y) = \Omega_2(y) \cdot \Omega_1(x)$, we have
+        \begin{equation}
+            \begin{cases}
+                Left: (\Omega_1(x) \cdot \Omega_2(y)) \cdot z = (\Omega_1(x) \otimes z) \cdot \Omega_2(y) \\
+                Right: (\Omega_2(y) \cdot \Omega_1(x)) \cdot z = (\Omega_1(x) \otimes z) \cdot \Omega_2(y)
+            \end{cases}
+            \nonumber
+        \end{equation}
+        
+        $\therefore Left = Right$ 
+        $\Rightarrow \Omega_1(x) \cdot \Omega_2(y) = \Omega_2(y) \cdot \Omega_1(x)$.
+
+        For $\Omega_1(x) \cdot \Omega_2(y)^T = \Omega_2(y)^T \cdot \Omega_1(x)$, we have \\
+        By $\Omega_2(\bar{y}) = \Omega_2(y)^T$, $\Omega_2(\bar{y}) = \Omega_2(\begin{bmatrix} -y_1 \\ -y_2 \\ -y_3 \\ -y_4 \end{bmatrix}) = \begin{bmatrix} y_4 & -y_3 & y_2 & -y_1 \\ y_3 & y_4 & -y_1 & -y_2 \\ -y_2 & y_1 & y_4 & -y_3 \\ y_1 & y_2 & y_3 & y_4 \end{bmatrix}$.
+
+        Then the subsequent proof are similar to the previous one.
+    \end{itemize}
+
 \end{enumerate}
 
 \subsubsection{Observations}
@@ -775,11 +853,37 @@ By combining \textit{tf2\_ros::TransformBroadcaster} with \textit{lookupTransfor
 
 %----------------------------------------------------------------------------------------
 \section{Reflection and Analysis}
-% TODO: Write a reflection and analysis of the lab report.
+This laboratory provided a comprehensive and progressive introduction to \textit{ROS}, beginning with environment setup and advancing toward multi-frame management, dynamic transformations, and 3D visualization. 
+Through the installation process, I realized that ROS—especially \textit{ROS 1} — remains highly sensitive to system dependencies. 
+The challenges encountered on \textit{Ubuntu 24.04} highlighted the importance of understanding underlying build systems and the role of community-maintained distributions such as \textit{Shrike}, which effectively bridge compatibility gaps when official support is absent. 
+This experience reinforces that robotics development often requires navigating practical software engineering issues beyond algorithmic implementation.
+
+The subsequent tasks deepened my understanding of ROS’s computational graph. 
+By implementing publishers, subscribers, and TF frames, I gained insight into how \textit{ROS} enforces modularity: each node performs a single role, communicates through well-defined topics, and remains decoupled from system-wide execution flow. 
+Using tools such as \textit{rqt\_graph}, \textit{tf\_echo}, and \textit{rqt\_tf\_tree} provided an intuitive visualization of otherwise abstract message flow, making it easier to debug connectivity and timing issues.
+
+Particularly in Part III, the dynamic behavior of \textit{TF} became more apparent. 
+Implementing two moving drones illustrated how coordinate transformations are accumulated, queried, and rendered in real time. 
+It became clear that \textit{tf2} expects a continuous stream of transforms and must be supported by background threads or asynchronous spinners; otherwise, failed lookups, extrapolation errors, or empty buffers will occur. 
+This hands-on debugging process demonstrated the practical interplay between message timing, buffer duration, and the internal mechanics of \textit{TF} listeners.
+
+Mathematically analyzing the drones’ trajectories—deriving planar equations, performing coordinate-frame rotations, and proving that the relative motion forms an ellipse—connected theoretical kinematics with real-time visualization in \textit{RViz}. 
+This bridging of computation, geometry, and visualization is a core skill in robotics, and the lab provided a clear demonstration of how abstract frame transformations translate into concrete 3D animations.
 
 %----------------------------------------------------------------------------------------
 \section{Conclusion}
-% TODO: Write the conclusion of the lab report.
+Lab 2 successfully introduced the essential components of the \textit{ROS} ecosystem, covering installation, workspace management, node communication, and TF-based motion visualization. 
+By completing each part, I gained a solid understanding of how ROS organizes complex robotic systems into lightweight, interconnected processes that communicate through standardized mechanisms.
+
+The experiment achieved its learning objectives:
+\begin{itemize}
+    \item The \textit{ROS} environment was correctly installed on \textit{Ubuntu 24.04} using a community-supported framework.
+    \item Publisher and subscriber nodes were implemented and verified through \textit{ROS} tools.
+    \item \textit{TF} was used to model both static and dynamic coordinate frames.
+    \item Two drones with distinct motion patterns were simulated and visualized in \textit{RViz}.
+    \item Mathematical derivation validated the geometric properties observed in the simulation.
+\end{itemize}
+Overall, The lab demonstrated that \textit{ROS} is not merely a middleware but a structured ecosystem enabling scalable, modular robotics development.
 \newpage
 
 %----------------------------------------------------------------------------------------
