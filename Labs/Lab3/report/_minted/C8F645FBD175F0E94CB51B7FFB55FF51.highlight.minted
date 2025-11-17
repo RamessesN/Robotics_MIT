@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }\PYGZti{}/shrike/ros\PYGZus{}ws
+catkin\PYGZus{}make\PYGZus{}isolated\PYG{+w}{ }\PYGZhy{}\PYGZhy{}install\PYG{+w}{ }\PYGZhy{}DCMAKE\PYGZus{}BUILD\PYGZus{}TYPE\PYG{o}{=}Release
+\PYG{n+nb}{source}\PYG{+w}{ }\PYGZti{}/shrike/ros\PYGZus{}ws/devel\PYGZus{}isolated/setup.bash
+rosrun\PYG{+w}{ }ros\PYGZus{}sample\PYG{+w}{ }ros\PYGZus{}sample\PYGZus{}node
+\end{MintedVerbatim}

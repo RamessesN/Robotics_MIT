@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+rosrun\PYG{+w}{ }turtlesim\PYG{+w}{ }turtle\PYGZus{}teleop\PYGZus{}key
+\end{MintedVerbatim}

@@ -1,0 +1,158 @@
+\documentclass[12pt,a4paper]{article}
+
+%----------------------------------------------------------------------------------------
+% PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+\usepackage{graphicx,float,booktabs,array,multirow,url}
+\usepackage{gensymb}
+\usepackage[british]{babel}
+\usepackage[square,numbers,sort&compress]{natbib}
+\usepackage{caption,subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+
+\usepackage{minted}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+
+\usepackage{amssymb}
+\usepackage{amsmath,amssymb,amsfonts}
+
+\usepackage{silence}
+\WarningFilter{gensymb}{Not defining}
+
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue]{hyperref}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM ABSTRACT FORMAT
+%----------------------------------------------------------------------------------------
+\makeatletter
+\renewenvironment{abstract}{
+    \begin{center}
+        \large\bfseries \abstractname
+    \end{center}
+    \begin{quote}\small
+}{
+    \end{quote}
+}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+% USER INFORMATION
+%----------------------------------------------------------------------------------------
+\newcommand{\studentname}{Yuwei ZHAO}
+\newcommand{\studentnumber}{23020036096}
+\newcommand{\labgroup}{Group \#31}
+\newcommand{\labdate}{2025-11-20}
+\newcommand{\course}{Robotics Integration Group Project I}
+\newcommand{\labtitle}{Lab 3 Report}
+
+%----------------------------------------------------------------------------------------
+% TITLE
+%----------------------------------------------------------------------------------------
+\title{
+    \vspace{-1cm}
+    \textbf{\labtitle}\\[0.3em]
+    \Large \course
+}
+\author{
+    \studentname~(\studentnumber)\\
+    \labgroup \quad \labdate
+}
+\date{}
+
+%----------------------------------------------------------------------------------------
+% PAGE STYLE
+%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\labtitle}
+\fancyhead[C]{\studentname~(\studentnumber)}
+\fancyhead[R]{\labgroup}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.75em}
+
+%----------------------------------------------------------------------------------------
+% DOCUMENT BODY
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+
+See Resources on \href{https://github.com/RamessesN/Robotics_MIT}{github.com/RamessesN/Robotics\_MIT}.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+
+%----------------------------------------------------------------------------------------
+\section{Procedure}
+%----------------------------------------------------------------------------------------
+\subsection{Part I}
+\subsubsection{Objective}
+
+\subsubsection{Methodology}
+
+\subsubsection{Observations}
+
+\subsubsection{Discussion}
+
+%----------------------------------------------------------------------------------------
+\subsection{Part II}
+\subsubsection{Objective}
+
+\subsubsection{Methodology}
+
+\subsubsection{Observations}
+
+\subsubsection{Discussion}
+
+%----------------------------------------------------------------------------------------\subsection{Part III}
+\subsection{Part III}
+\subsubsection{Objective}
+
+\subsubsection{Methodology}
+
+\subsubsection{Observations}
+
+\subsubsection{Discussion}
+
+%----------------------------------------------------------------------------------------
+\section{Reflection and Analysis}
+
+%----------------------------------------------------------------------------------------
+\section{Conclusion}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+% Source Code
+%----------------------------------------------------------------------------------------
+\pagestyle{empty}
+\section{Source Code}
+\label{section:source_code}
+\begin{itemize}
+    \item 
+
+    \item 
+\end{itemize}
+
+
+
+\end{document}

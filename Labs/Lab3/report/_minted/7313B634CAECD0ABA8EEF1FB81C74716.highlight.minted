@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+sudo\PYG{+w}{ }ln\PYG{+w}{ }\PYGZhy{}s\PYG{+w}{ }/usr/bin/python3\PYG{+w}{ }/usr/bin/python
+\end{MintedVerbatim}
